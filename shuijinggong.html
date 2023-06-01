@@ -2,7 +2,8 @@
 <html> 
 <head> 
   <title>天津市水晶宫饭店周边地图</title> 
-  <meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;">  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes">
   <link rel="stylesheet" href="styles/style.css" type="text/css" > 
   <script type="text/javascript" src="scripts/spryMap-2.js"></script> 
   <script type="text/javascript"> 
@@ -66,6 +67,18 @@
   }
   </script>
   <style>
+    html, body, h1, h2, h3, h4, p, dl, dt, dd, ul, ol, li, form, input, textarea, select, label, table, td, div, span, a {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+      font-size: 100%;
+      background: transparent;
+    }
+    #worldMap {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+    }
     #worldMap>a {
       position:absolute;
       width:10px;
@@ -117,8 +130,8 @@
   </style>
 </head>
 <body> 
-    <div id="worldMap"  onmousewheel="return bbimg(this)">
-     <img src="map.jpg" alt="A map of the world."/>
+    <div id="worldMap">
+     <img src="map.jpg" alt=""/>
        <!--   <a onclick="alert('clickable demo')" style="top:1200px;left:2229px;background-color: red;" href="javascript:void(0)">
       </a> -->
       <!-- 水晶宫饭店 -->
