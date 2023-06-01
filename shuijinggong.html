@@ -1,0 +1,241 @@
+<!doctype html> 
+<html> 
+<head> 
+  <title>天津市水晶宫饭店周边地图</title> 
+  <meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;">  
+  <link rel="stylesheet" href="styles/style.css" type="text/css" > 
+  <script type="text/javascript" src="scripts/spryMap-2.js"></script> 
+  <script type="text/javascript"> 
+  var params = {
+            zoomVal:1,
+            zoomlvl:0.2,
+            left: 0,
+            top: 0,
+            currentX: 0,
+            currentY: 0,
+            flag: false
+        };
+  var screenW = window.innerWidth;
+  var screenH = window.innerHeight;
+  //图片缩放
+  function bbimg(o){
+      params.zoomVal+=event.wheelDelta/1200;
+      params.zoomlvl = screenH/2656;
+      if(screenH < 2656 * params.zoomVal){
+        if (params.zoomVal >= params.zoomlvl) {
+            o.style.transform="scale("+params.zoomVal+")";
+        } else {
+            params.zoomVal = params.zoomlvl;
+            o.style.transform="scale("+params.zoomVal+")";
+            return false;
+        }
+      } else {
+        params.zoomVal = params.zoomlvl;
+        o.style.transform="scale("+params.zoomVal+")";
+        return false;
+      }
+  }
+  window.onload = function() {
+    var startX = 5058 / 2 - screenW / 2 - 750;
+    var startY = 2656 / 2 - screenH / 2 - 100;
+    var data = {id : "worldMap",
+                          height: screenH,
+                          width: screenW,
+                          startX: startX,
+                          startY: startY,
+                          cssClass: "mappy"}
+    //console.log(data)
+    var map = new SpryMap(data);
+  }
+  function closeInfoWindow() {
+    var box = document.getElementById("info_card");
+    box.innerHTML = "";
+    box.style.display = "none";
+  }
+  function showDialog(title, x, y, content, goto) {
+    var html = '<div class="title"><span class="title_name"  align="left">' + title + '</span><div class="close_img" onclick="closeInfoWindow()">X</div></div><div align="left" class="info-content">' + content + '</div>'
+    html = html + '<span id="tourDaolan" onclick="location.href=\'' + goto + '\'" style="width: 75px; height: 33px;font-size: 12px; background-color: rgb(255, 221, 2); display: inline-block; line-height: 33px; border-radius: 6.4px; color: rgb(114,64,11)">'
+                + '<img style="width: 15px; height: 15px;margin-right: 4px; vertical-align: middle;" src="daohang.png">'
+                + '<span>导航</span>'
+                + '</span>'
+    var box = document.getElementById("info_card");
+    box.innerHTML = html;
+    box.style.display = "block";
+    box.style.top = y + "px";
+    box.style.left = x + "px";
+  }
+  </script>
+  <style>
+    #worldMap>a {
+      position:absolute;
+      width:10px;
+      height:10px;
+      display:block;
+      z-index:10;
+    }
+    .info_card {
+      position: absolute;
+      min-width: 100px;
+      white-space: nowrap;
+      background-color: white;
+      text-align: center;
+      padding: 0px 10px 0px;
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px;
+      display: none;
+      width: 200px;
+      height: 150px;
+      z-index:99999;
+    }
+    .title {
+      padding:0px;
+      margin:0px;
+      height:20px;
+      width: 150px;
+      background-color: #fff;
+      text-align: left;
+    }
+    .title span.title_name {
+      position: relative;
+      top: 7px;
+      font-size: 12px;
+    }
+    .info_card .title .close_img {
+      position: absolute;
+      cursor: pointer;
+      top:10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+    }
+    .info-content {
+      width: 200px;
+      height: 90px;
+      position: relative;
+      font-size: 12px !important;
+    }
+  </style>
+</head>
+<body> 
+    <div id="worldMap"  onmousewheel="return bbimg(this)">
+     <img src="map.jpg" alt="A map of the world."/>
+       <!--   <a onclick="alert('clickable demo')" style="top:1200px;left:2229px;background-color: red;" href="javascript:void(0)">
+      </a> -->
+      <!-- 水晶宫饭店 -->
+      <a href="javascript:void(0)" onclick="showDialog('水晶宫饭店', 1800, 1000, '', 'https://map.qq.com/m/place/info/uid=5879860543052815477&word=%E5%A4%A9%E6%B4%A5%E6%B0%B4%E6%99%B6%E5%AE%AB%E9%A5%AD%E5%BA%97&type=point')" style="top:1100px;left:1700px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+      <!-- 水晶湖 https://map.qq.com/m/place/info/uid=1660257995036403882&word=%E6%B0%B4%E6%99%B6%E6%B9%96&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('水晶湖', 1450, 880, '', 'https://map.qq.com/m/place/info/uid=1660257995036403882&word=%E6%B0%B4%E6%99%B6%E6%B9%96&type=point')" style="top:980px;left:1350px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //湖畔亲水平台 https://map.qq.com/m/place/info/uid=5879860543052815477&word=%E6%B9%96%E7%95%94%E4%BA%B2%E6%B0%B4%E5%B9%B3%E5%8F%B0&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('湖畔亲水平台', 1450, 1180, '', 'https://map.qq.com/m/place/info/uid=5879860543052815477&word=%E6%B9%96%E7%95%94%E4%BA%B2%E6%B0%B4%E5%B9%B3%E5%8F%B0&type=point')" style="top:1280px;left:1350px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //湖畔花园 https://map.qq.com/m/place/info/uid=2179424981190746856&word=%E6%B9%96%E7%95%94%E8%8A%B1%E5%9B%AD&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('湖畔花园', 1680, 700, '', 'https://map.qq.com/m/place/info/uid=2179424981190746856&word=%E6%B9%96%E7%95%94%E8%8A%B1%E5%9B%AD&type=point ')" style="top:800px;left:1580px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+       <!-- //天津大礼堂 https://map.qq.com/m/place/info/uid=9221272510725327847&word=%E5%A4%A9%E6%B4%A5%E5%A4%A7%E7%A4%BC%E5%A0%82&type=point -->
+       <a href="javascript:void(0)" onclick="showDialog('天津大礼堂', 1970, 1650, '', 'https://map.qq.com/m/place/info/uid=9221272510725327847&word=%E5%A4%A9%E6%B4%A5%E5%A4%A7%E7%A4%BC%E5%A0%82&type=point')" style="top:1750px;left:1870px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //自然博物馆 https://map.qq.com/m/place/info/uid=13216387961787657604&word=%E5%A4%A9%E6%B4%A5%E8%87%AA%E7%84%B6%E5%8D%9A%E7%89%A9%E9%A6%86&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('自然博物馆', 2900, 1600, '', 'https://map.qq.com/m/place/info/uid=13216387961787657604&word=%E5%A4%A9%E6%B4%A5%E8%87%AA%E7%84%B6%E5%8D%9A%E7%89%A9%E9%A6%86&type=point')" style="top:1700px;left:2800px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //天津博物馆 https://map.qq.com/m/place/info/uid=5742798524136831047&word=%E5%A4%A9%E6%B4%A5%E5%8D%9A%E7%89%A9%E9%A6%86&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('天津博物馆', 3550, 1900, '', 'https://map.qq.com/m/place/info/uid=5742798524136831047&word=%E5%A4%A9%E6%B4%A5%E5%8D%9A%E7%89%A9%E9%A6%86&type=point')" style="top:2000px;left:3450px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //天津美术馆 https://map.qq.com/m/place/info/uid=12132692914535661934&word=%E5%A4%A9%E6%B4%A5%E7%BE%8E%E6%9C%AF%E9%A6%86&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('天津美术馆', 3930, 1900, '', 'https://map.qq.com/m/place/info/uid=12132692914535661934&word=%E5%A4%A9%E6%B4%A5%E7%BE%8E%E6%9C%AF%E9%A6%86&type=point')" style="top:2000px;left:3830px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //天津图书馆 https://map.qq.com/m/place/info/uid=17381748641374935227&word=%E5%A4%A9%E6%B4%A5%E5%9B%BE%E4%B9%A6%E9%A6%86(%E6%96%87%E5%8C%96%E4%B8%AD%E5%BF%83%E5%88%86%E9%A6%86)&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('天津图书馆', 4330, 1900, '', 'https://map.qq.com/m/place/info/uid=17381748641374935227&word=%E5%A4%A9%E6%B4%A5%E5%9B%BE%E4%B9%A6%E9%A6%86(%E6%96%87%E5%8C%96%E4%B8%AD%E5%BF%83%E5%88%86%E9%A6%86)&type=point')" style="top:2000px;left:4230px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+
+      <!-- //天津中华剧院 https://map.qq.com/m/place/info/uid=3246965086466095161&word=%E5%A4%A9%E6%B4%A5%E4%B8%AD%E5%8D%8E%E5%89%A7%E9%99%A2&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('天津中华剧院', 4730, 1900, '', 'https://map.qq.com/m/place/info/uid=17381748641374935227&word=%E5%A4%A9%E6%B4%A5%E5%9B%BE%E4%B9%A6%E9%A6%86(%E6%96%87%E5%8C%96%E4%B8%AD%E5%BF%83%E5%88%86%E9%A6%86)&type=point')" style="top:2000px;left:4630px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //天津大剧院 https://map.qq.com/m/place/info/uid=5192144685254939370&word=%E5%A4%A9%E6%B4%A5%E5%A4%A7%E5%89%A7%E9%99%A2&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('天津大剧院', 4330, 1400, '', 'https://map.qq.com/m/place/info/uid=17381748641374935227&word=%E5%A4%A9%E6%B4%A5%E5%9B%BE%E4%B9%A6%E9%A6%86(%E6%96%87%E5%8C%96%E4%B8%AD%E5%BF%83%E5%88%86%E9%A6%86)&type=point')" style="top:1500px;left:4230px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //天津科学技术馆 https://map.qq.com/m/place/info/uid=11316755402904135318&word=%E5%A4%A9%E6%B4%A5%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E9%A6%86&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('天津科学技术馆', 4750, 1400, '', 'https://map.qq.com/m/place/info/uid=17381748641374935227&word=%E5%A4%A9%E6%B4%A5%E5%9B%BE%E4%B9%A6%E9%A6%86(%E6%96%87%E5%8C%96%E4%B8%AD%E5%BF%83%E5%88%86%E9%A6%86)&type=point')" style="top:1500px;left:4650px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+
+      <!-- //阳光乐园彩悦城 https://map.qq.com/m/place/info/uid=17231580862215980863&word=%E9%98%B3%E5%85%89%E4%B9%90%E5%9B%AD-%E5%BD%A9%E6%82%A6%E5%9F%8E&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('阳光乐园彩悦城', 4530, 800, '', 'https://map.qq.com/m/place/info/uid=17231580862215980863&word=%E9%98%B3%E5%85%89%E4%B9%90%E5%9B%AD-%E5%BD%A9%E6%82%A6%E5%9F%8E&type=point')" style="top:900px;left:4430px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!-- //天津万象城 https://map.qq.com/m/place/info/uid=6700761435410104226&word=%E5%A4%A9%E6%B4%A5%E4%B8%87%E8%B1%A1%E5%9F%8E&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('天津万象城', 3800, 800, '', ' https://map.qq.com/m/place/info/uid=6700761435410104226&word=%E5%A4%A9%E6%B4%A5%E4%B8%87%E8%B1%A1%E5%9F%8E&type=point')" style="top:900px;left:3700px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+
+      <!--//市民广场/文化中心地铁站 https://map.qq.com/m/place/info/uid=17889069513078454823&word=%E5%B8%82%E6%B0%91%E5%B9%BF%E5%9C%BA&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('市民广场/文化中心地铁站', 2600, 800, '', 'https://map.qq.com/m/place/info/uid=17889069513078454823&word=%E5%B8%82%E6%B0%91%E5%B9%BF%E5%9C%BA&type=point')" style="top:900px;left:2500px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+
+      <!--//天津宾馆地铁站 https://map.qq.com/m/place/info/uid=12961233945816203188&word=%E5%A4%A9%E6%B4%A5%E5%AE%BE%E9%A6%86%E5%9C%B0%E9%93%81%E7%AB%99&type=point -->
+      <a href="javascript:void(0)" onclick="showDialog('天津宾馆地铁站', 300, 2000, '', 'https://map.qq.com/m/place/info/uid=12961233945816203188&word=%E5%A4%A9%E6%B4%A5%E5%AE%BE%E9%A6%86%E5%9C%B0%E9%93%81%E7%AB%99&type=point')" style="top:2100px;left:200px">
+        <img src="marker.png" alt="" style="margin-left:10px;width:60px;height:60px;" />
+        <span style="width:100px;color:#000;text-decoration: none;display:inline-block;"></span>
+      </a>
+      <div id="info_card" class="info_card"></div>
+    </div>
+</body> 
+</html>
+
+<script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</script>
